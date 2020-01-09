@@ -444,7 +444,7 @@ void test_dup_dup2()
 
 	示例：在 `main`函数中调用`test_fcntl()`函数:
 	
-	```
+```
 void test_fcntl()
 {
     M_TRACE("---------  Begin test_fcntl()  ---------\n");
@@ -475,7 +475,7 @@ void test_fcntl()
     close(fd);
     M_TRACE("---------  End test_fcntl()  ---------\n\n");
 }
-	```
+```
 
  	 ![fcntl](../imgs/file_IO/fcntl.JPG) 
 
