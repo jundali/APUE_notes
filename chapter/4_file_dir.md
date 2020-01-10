@@ -67,9 +67,10 @@
 	time_t tv_sec;	// 秒
 	long tv_nsec; 	//纳秒
 		}
-```
+	```
 
-3. UNIX 文件类型：
+
+3. UNIX 文件类型
 	- 普通文件：最常见的文件类型，这种文件包含了某种形式的数据。至于这种数据是二进制还是文本，对内核无区别。普通文件的内容解释由具体的应用程序进行。
 	- 目录文件：这种文件包含了其他文件的名字，以及指向这些文件有关信息的指针。
 		- 只有内核可以直接写目录文件（通常用户写目录文件都要通过内核）
@@ -165,8 +166,8 @@
 8. `stat`和`lstat`示例：在`main`函数中调用`test_stat_lstat`函数：
 
 	```
-void test_stat_lstat()
-{
+	void test_stat_lstat()
+	{
     M_TRACE("---------  Begin test_stat_lstat()  ---------\n");
     Stat stat_buf;
     My_stat("/home/huaxz1986/APUE/main.c",&stat_buf); // regular file
@@ -180,7 +181,7 @@ void test_stat_lstat()
     close(fd);
     My_stat("test_stat",&stat_buf); // regular file
     M_TRACE("---------  End test_stat_lstat()  ---------\n\n");
-}
+	}
 	```
 
   	![stat](../imgs/file_dir/stat.JPG) 
@@ -235,17 +236,17 @@ void test_stat_lstat()
 3. 示例：测试 `umask`和`access`函数的用法：在`main`函数中调用`test_access_umask` 函数：
 
 	```
-void test_access_umask()
-{
-    My_access("/no/exist",F_OK); // no exist
-    My_access("/etc/shadow",W_OK);// can not write
-    My_access("/home/huaxz1986/APUE",W_OK); // can write
+	void test_access_umask()
+	{
+    	My_access("/no/exist",F_OK); // no exist
+    	My_access("/etc/shadow",W_OK);// can not write
+    	My_access("/home/huaxz1986/APUE",W_OK); // can write
 
-    print_new_file_mode("test_umask1") ;// old umask
-    //new umask
-    My_umask(S_IRUSR|S_IRGRP|S_IROTH);
-    print_new_file_mode("test_umask2") ;// new umask
-}
+    	print_new_file_mode("test_umask1") ;// old umask
+    	//new umask
+    	My_umask(S_IRUSR|S_IRGRP|S_IROTH);
+    	print_new_file_mode("test_umask2") ;// new umask
+	}
 	```
   	![access_umask](../imgs/file_dir/access_umask.JPG) 
 
@@ -353,15 +354,15 @@ void test_access_umask()
 4. 示例：在 `main` 函数中调用`test_chmod_chown` 函数：
 
 	```
-void test_chmod_chown()
-{
+	void test_chmod_chown()
+	{
     const char *file_name="test";
     Stat buf;
 
     My_stat(file_name,&buf);
     My_chmod(file_name,S_IRWXU);
     My_chown(file_name,1,1);
-}
+	}
 	```
 
   	![chmod_chown](../imgs/file_dir/chmod_chown.JPG) 
@@ -403,8 +404,8 @@ void test_chmod_chown()
 3. 示例：在`main`函数中调用`test_truncate_size`函数：
 
 	```
-void test_truncate_size()
-{
+	void test_truncate_size()
+	{
     M_TRACE("---------  Begin test_truncate_size()  ---------\n");
     char buffer[100];
     int len;
@@ -429,7 +430,7 @@ void test_truncate_size()
     printf("\n");
     close(fd);
     M_TRACE("---------  End test_truncate_size()  ---------\n");
-}
+	}
 	```
 
   	![truncate](../imgs/file_dir/truncate.JPG) 
@@ -565,8 +566,8 @@ void test_truncate_size()
 6. `link/unlink`实例：在`main`函数中调用`test_link_unlink`函数
 
 	```
-void test_link_unlink()
-{
+	void test_link_unlink()
+	{
     M_TRACE("---------  Begin test_link_unlink()  ---------\n");
     assert(prepare_file("test",NULL,0,S_IRWXU)==0);
     un_prepare_file("test1");
@@ -582,7 +583,7 @@ void test_link_unlink()
     un_prepare_file("test");
     un_prepare_file("test1");
     M_TRACE("---------  End test_link_unlink()  ---------\n\n");
-}
+	}
 	```
 	  ![link_unlink](../imgs/file_dir/link_unlink.JPG) 
 
@@ -707,8 +708,8 @@ void test_link_unlink()
 11. 符号链接示例：在`main`函数中调用`test_symlink_readlink`函数：
 
 	```
-void test_symlink_readlink()
-{
+	void test_symlink_readlink()
+	{	
     M_TRACE("---------  Begin test_symlink_readlink()  ---------\n");
     assert(prepare_file("test","abcdefg0123456",14,S_IRWXU)==0); // 准备 test 文件
     print_file_type("test"); // 查看 test 文件类型
@@ -723,7 +724,7 @@ void test_symlink_readlink()
     un_prepare_file("test"); // 删除 test 文件
     un_prepare_file("test_symlink"); // 删除 test_symlink 文件
     M_TRACE("---------  End test_symlink_readlink()  ---------\n\n");
-}
+	}
 
 
 	```
@@ -809,8 +810,8 @@ void test_symlink_readlink()
 3. 示例：在 `main`函数中调用`test_utimes`函数： 
 
 	```
-void test_utimes()
-{
+	void test_utimes()
+	{
     M_TRACE("---------  Begin test_utimes()  ---------\n");
     assert(prepare_file("test",NULL,0,S_IRWXU)==0); // 准备 test 文件
     print_file_time("test");
@@ -829,7 +830,7 @@ void test_utimes()
 
     un_prepare_file("test"); // 删除 test 文件
     M_TRACE("---------  End test_utimes()  ---------\n\n");
-}
+	}
 	```
 
 	  ![utimes](../imgs/file_dir/utimes.JPG) 	
@@ -958,8 +959,8 @@ void test_utimes()
 5. 示例： 在`main`函数中调用 `test_dir_operations` 函数：
 
 	```
-void test_dir_operations()
-{
+	void test_dir_operations()
+	{
     M_TRACE("---------  Begin test_dir_operations()  ---------\n");
     //*** 创建目录 ****
     My_mkdir("test",S_IRWXU);
@@ -991,7 +992,7 @@ void test_dir_operations()
     My_rmdir("test/test1"); // 必须非空才能删除成功
     My_rmdir("test"); // 必须非空才能删除成功
     M_TRACE("---------  End test_dir_operations()  ---------\n\n");
-}
+	}
 	```
 
 	  ![dir_function](../imgs/file_dir/dir_function.JPG) 
