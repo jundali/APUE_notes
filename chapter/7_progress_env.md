@@ -512,7 +512,5 @@
 	}
 	```
 
-	![getrlimit](http://note.youdao.com/noteshare?id=139f78681dca7fbfb4f7e1c107b9c636&sub=076FE79408104B978AAFA09D4DC6CD06) 
-
-
+	![getrlimit](../imgs/progress_env/getrlimit.JPG) 
 	注意： `setrlimit`需要超级用户的权限，否则报错。
