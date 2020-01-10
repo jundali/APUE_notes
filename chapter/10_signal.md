@@ -164,8 +164,8 @@
 3. 示例：在`main`函数中调用`test_kill_raise`函数
 
 	```
-void test_kill_raise()
-{
+    void test_kill_raise()
+    {
     M_TRACE("---------  Begin test_kill_raise()  ---------\n");
     add_sigaction(SIGCHLD,NULL,0,0,sig_print);
     add_sigaction(SIGINT,NULL,0,0,sig_print);
@@ -175,7 +175,7 @@ void test_kill_raise()
     print_pid();
     print_parent_pid();
     M_TRACE("---------  End test_kill_raise()  ---------\n\n");
-}
+    }
 	```
 	![kill_raise](../imgs/signal/kill_raise.JPG)
 
@@ -208,8 +208,8 @@ void test_kill_raise()
 5. 示例：在`main`函数中调用`test_alarm`函数
 
 	```
-void test_alarm()
-{
+    void test_alarm()
+    {
     M_TRACE("---------  Begin test_alarm()  ---------\n");
     add_sigaction(SIGALRM,NULL,0,0,sig_print);
     My_alarm(2) ; // 2s 定时器
@@ -221,7 +221,7 @@ void test_alarm()
     My_alarm(4); //4s 定时器
     My_alarm(2); //2s 定时器
     M_TRACE("---------  End test_alarm()  ---------\n\n");
-}
+    }
 	```
 	![alarm](../imgs/signal/alarm.JPG)
  
@@ -243,14 +243,14 @@ void test_alarm()
 7. 示例：在`main`函数中调用`test_pause`函数
 
 	```
-void test_pause()
-{
+    void test_pause()
+    {
     M_TRACE("---------  Begin test_alarm()  ---------\n");
     add_sigaction(SIGALRM,NULL,0,0,sig_print);
     My_alarm(2) ; // 2s 定时器
     My_pause();
     M_TRACE("---------  End test_alarm()  ---------\n\n");
-}
+    }
 	```
 	![pause](../imgs/signal/pause.JPG)
 
@@ -303,8 +303,8 @@ void test_pause()
 10. 示例：在`main`函数中调用`test_sigprocmask_sigset`函数
 
 	```
-void test_sigprocmask_sigset()
-{
+    void test_sigprocmask_sigset()
+    {
     M_TRACE("---------  Begin test_sigprocmask_sigset()  ---------\n");
     sigset_t set;
     //********** 测试操作 sigset **********//
@@ -329,7 +329,7 @@ void test_sigprocmask_sigset()
     My_sigprocmask(SIG_SETMASK,&set,NULL);
     print_progress_mask_sigset();// 打印进程的信号屏蔽字
     M_TRACE("---------  End test_sigprocmask_sigset()  ---------\n\n");
-}
+    }
 	```
 	![sigprocmask](../imgs/signal/sigprocmask.JPG)	
 	
@@ -351,8 +351,8 @@ void test_sigprocmask_sigset()
 12. 示例：在`main`函数中调用`test_sigpending`函数
 
 	```
-void test_sigpending()
-{
+    void test_sigpending()
+    {
     M_TRACE("---------  Begin test_sigpending()  ---------\n");
 
     //添加信号处理程序
@@ -382,7 +382,7 @@ void test_sigpending()
 
     My_sigprocmask(SIG_SETMASK,&o_set,NULL);// 还原信号屏蔽字
     M_TRACE("---------  End test_sigpending()  ---------\n\n");
-}
+    }
 	```
 	![sigpending](../imgs/signal/sigpending.JPG)
 
@@ -483,8 +483,8 @@ void test_sigpending()
 14. 示例：在`main`函数中调用 `test_sigaction`函数
 
 	```
-void test_sigaction()
-{
+    void test_sigaction()
+    {
     M_TRACE("---------  Begin test_sigaction()  ---------\n");
     print_progress_mask_sigset();
 
@@ -509,7 +509,7 @@ void test_sigaction()
     print_progress_mask_sigset();
 
     M_TRACE("---------  End test_sigaction()  ---------\n\n");
-}
+    }
 	```
 	当不进行 NO_DEFER ，以及不自动重启被中断的系统调用时：
 
@@ -554,8 +554,8 @@ void test_sigaction()
 16. 示例：在`main`函数中调用`test_sigsetjmp_siglongjmp`函数：
 
 	```
-void test_sigsetjmp_siglongjmp()
-{
+    void test_sigsetjmp_siglongjmp()
+    {
     M_TRACE("---------  Begin test_setjmp_longjmp()  ---------\n");
     print_progress_mask_sigset(); //打印当前的信号屏蔽字
 
@@ -582,7 +582,7 @@ void test_sigsetjmp_siglongjmp()
             break;
         }
     M_TRACE("---------  End test_setjmp_longjmp()  ---------\n\n");
-}
+    }
 	```
 	![siglongjmp](../imgs/signal/siglongjmp.JPG)
 
@@ -611,8 +611,8 @@ void test_sigsetjmp_siglongjmp()
 18. 示例：在`main`函数中调用`test_sigsuspend`函数：
 
 	```
-void test_sigsuspend()
-{
+    void test_sigsuspend()
+    {
     M_TRACE("---------  Begin test_sigsuspend()  ---------\n");
     //***** 添加信号处理程序 ****//
     add_sigaction(SIGINT,NULL,0,1,sig_print);
@@ -631,7 +631,7 @@ void test_sigsuspend()
     check_waitpid_signal();
 
     M_TRACE("---------  End test_sigsuspend()  ---------\n\n");
-}
+    }
 	```
 	![sigsuspend](../imgs/signal/sigsuspend.JPG)
 
@@ -658,8 +658,8 @@ void test_sigsuspend()
 20. 示例：在`main`函数中调用`test_abort`函数：
 
 	```
-void test_abort()
-{
+    void test_abort()
+    {
     M_TRACE("---------  Begin test_abort()  ---------\n");
 
     //**** 添加信号处理程序 ****//
@@ -678,7 +678,7 @@ void test_abort()
 
     My_sigprocmask(SIG_SETMASK,&o_set,NULL); // 恢复进程的信号屏蔽字
     M_TRACE("---------  End test_abort()  ---------\n\n");
-}
+    }
 	```
 
 	![abort](../imgs/signal/abort.JPG)
@@ -744,21 +744,21 @@ void test_abort()
 22. 示例：在`main`函数中调用`test_sleep_nanosleep`函数
 
 	```
-void test_sleep_nanosleep()
-{
+        void test_sleep_nanosleep()
+        {
     M_TRACE("---------  Begin test_alarm()  ---------\n");
     add_sigaction(SIGINT,NULL,0,0,sig_print);
     add_sigaction(SIGALRM,NULL,0,0,sig_print);
     create_child();
     // 只有父进程能到达此处
     My_sleep(3);
-//    struct timespec request_time;
-//    struct timespec remain_time;
-//    request_time.tv_nsec=100;
-//    request_time.tv_sec=3;
-//    My_nanosleep(&request_time,&remain_time);
+    //    struct timespec request_time;
+    //    struct timespec remain_time;
+    //    request_time.tv_nsec=100;
+    //    request_time.tv_sec=3;
+    //    My_nanosleep(&request_time,&remain_time);
     M_TRACE("---------  End test_alarm()  ---------\n\n");
-}
+    }
 	```
 	![sleep](../imgs/signal/sleep.JPG)
 

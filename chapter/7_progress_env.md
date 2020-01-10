@@ -80,15 +80,15 @@
 6. 示例：在`main`函数中调用`test_exit_atexit`函数：
 
 	```
-void test_exit_atexit()
-{
+	void test_exit_atexit()
+	{
     M_TRACE("---------  Begin test_exit_atexit()  ---------\n");
     add_atexit();
     exit(258);  // 三选一
-//    _Exit(260);  // 三选一
-//    _exit(265);  // 三选一
+	//    _Exit(260);  // 三选一
+	//    _exit(265);  // 三选一
     M_TRACE("---------  End test_exit_atexit()  ---------\n\n");
-}
+	}
 	```
 	可以看到：
 	- 终止处理程序`exit handler` 调用顺序是逆序的
@@ -141,14 +141,14 @@ void test_exit_atexit()
 		> 因为内核在程序开始运行前将未初始化数据段设置为 0 
 	- `size`命令可以查看程序的正文段、数据段 和`bss`段长度（以字节为单位）
 
-10.  `malloc/calloc/realloc`函数：动态分配存储空间
-
+10. `malloc/calloc/realloc`函数:动态分配存储空间 
 	```
 	#include<stdlib.h>
 	void *malloc(size_t size);
 	void *calloc(size_t nobj,size_t size);
-	void *realloc(void *ptr,size_t newsize);
+	void *realloc(void *ptr,size_t 
 	```
+
 	- 参数：
 
 		对于`malloc`函数：
@@ -179,11 +179,11 @@ void test_exit_atexit()
 		- 内存泄漏会导致进程地址空间长度慢慢增加直到不再有空闲空间。此时过度的换页开销会导致性能下降
 	- 对一块动态分配的内存，只能`free`一次。如果`free`多次则会发生错误
 
-11. 示例:在`main`函数中调用`test_malloc_realloc`函数：
+12. 示例:在`main`函数中调用`test_malloc_realloc`函数：
 
 	```
-void test_malloc_realloc()
-{
+	void test_malloc_realloc()
+	{
     M_TRACE("---------  Begin test_malloc_realloc()  ---------\n");
     free(NULL); //测试 free(NULL)
     void * ptr1;
@@ -202,10 +202,10 @@ void test_malloc_realloc()
     free(ptr5); // ok ，因为是新分配的
     free(ptr4);
     free(ptr2); // ok， 因为是新分配的
-// free(ptr1); // 错误：因为 ptr1=ptr3，而 ptr3指向的内存在 My_realloc(ptr3,1000) 时被释放
-// free(ptr3);// 错误：因为 ptr1=ptr3，而 ptr3指向的内存在 My_realloc(ptr3,1000) 时被释放
+	// free(ptr1); // 错误：因为 ptr1=ptr3，而 ptr3指向的内存在 My_realloc(ptr3,1000) 时被释放
+	// free(ptr3);// 错误：因为 ptr1=ptr3，而 ptr3指向的内存在 My_realloc(ptr3,1000) 时被释放
     M_TRACE("---------  End test_malloc_realloc()  ---------\n\n");
-}
+	}
 	```
 
 	![malloc](../imgs/progress_env/malloc.JPG) 
@@ -317,8 +317,8 @@ void test_malloc_realloc()
 4. 示例：在`main`函数中调用`test_getenv_setenv`函数：
 
 	```
-void test_getenv_setenv()
-{
+	void test_getenv_setenv()
+	{
     M_TRACE("---------  Begin test_getenv_setenv()  ---------\n");
     print_environ();
     //********* 测试 getenv ******//
@@ -341,7 +341,7 @@ void test_getenv_setenv()
     My_unsetenv("bbb"); //不存在
     My_unsetenv("aaa");
     M_TRACE("---------  End test_getenv_setenv()  ---------\n\n");
-}
+	}
 	```
 
 	![set_get_env](../imgs/progress_env/set_get_env.JPG) 
@@ -391,8 +391,8 @@ void test_getenv_setenv()
 3. 示例：在`main`函数中调用`test_setjmp_longjmp`函数：
 
 	```
-void test_setjmp_longjmp()
-{
+	void test_setjmp_longjmp()
+	{
     M_TRACE("---------  Begin test_setjmp_longjmp()  ---------\n");
     char local_char='a'; // 局部变量，用于观察跨 longjmp 之后全局变量是否回滚
 
@@ -430,7 +430,7 @@ void test_setjmp_longjmp()
         printf("setjmp must returns no 0,1\n");
     }
     M_TRACE("---------  End test_setjmp_longjmp()  ---------\n\n");
-}
+	}
 	```
 	![longjump](../imgs/progress_env/longjump.JPG)
 
@@ -488,8 +488,8 @@ void test_setjmp_longjmp()
 2. 示例：在`main`函数中调用`test_getrlimit_setrlimit`函数：
 
 	```
-void test_getrlimit_setrlimit()
-{
+	void test_getrlimit_setrlimit()
+	{
     M_TRACE("---------  Begin test_getrlimit_setrlimit()  ---------\n");
     struct rlimit buf;
     //************ 测试 getrlimit ***********//
@@ -509,9 +509,10 @@ void test_getrlimit_setrlimit()
     My_setrlimit(RLIMIT_NICE,&buf);
     My_getrlimit(RLIMIT_NICE,&buf);
     M_TRACE("---------  End test_getrlimit_setrlimit()  ---------\n\n");
-}
+	}
 	```
 
-	![getrlimit](../imgs/progress_env/getrlimit.JPG) 
+	![getrlimit](http://note.youdao.com/noteshare?id=139f78681dca7fbfb4f7e1c107b9c636&sub=076FE79408104B978AAFA09D4DC6CD06) 
+
 
 	注意： `setrlimit`需要超级用户的权限，否则报错。

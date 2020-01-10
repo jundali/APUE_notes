@@ -65,8 +65,8 @@
 3. 示例：在`main`函数中调用`test_getpgrp_getpgid`函数:
 
 	```
-void test_getpgrp_getpgid()
-{
+    void test_getpgrp_getpgid()
+    {
     M_TRACE("---------  Begin test_getpgrp_getpgid()  ---------\n");
     create_child();
     // 只有父进程能到达此处
@@ -76,7 +76,7 @@ void test_getpgrp_getpgid()
     My_getpgrp(); // 父进程自己
     My_getpgid(getppid());// 父进程的父进程
     M_TRACE("---------  End test_getpgrp_getpgid()  ---------\n\n");
-}
+    }
 	```
 	![get_process_group_id](../imgs/progress_relations/get_process_group_id.JPG)
 
@@ -105,8 +105,8 @@ void test_getpgrp_getpgid()
 5. 示例：在`main`函数中调用`test_setpgid`函数：
 
 	```
-void test_setpgid()
-{
+    void test_setpgid()
+    {
     M_TRACE("---------  Begin test_setpgid()  ---------\n");
     create_child();
     // 只有父进程能到达此处
@@ -115,7 +115,7 @@ void test_setpgid()
     print_parent_pid();
     My_getpgrp(); // 父进程自己
     M_TRACE("---------  End test_setpgid()  ---------\n\n");
-}
+    }
 	```
   	![setpgid](../imgs/progress_relations/setpgid.JPG)
 
@@ -159,8 +159,8 @@ void test_setpgid()
 4. 示例：在`main`函数中调用`test_getsid_setsid`函数：
 
 	```
-void test_getsid_setsid()
-{
+    void test_getsid_setsid()
+    {
     M_TRACE("---------  Begin test_getsid_setsid()  ---------\n");
     create_child();
     // 只有父进程能到达此处
@@ -172,7 +172,7 @@ void test_getsid_setsid()
     My_setsid();
     My_getsid(0);
     M_TRACE("---------  End test_getsid_setsid()  ---------\n\n");
-}
+    }
 	```
   	![session_id](../imgs/progress_relations/session_id.JPG)
 	可以看到：
@@ -232,8 +232,8 @@ void test_getsid_setsid()
 
 
 	```
-void test_tcgetpgrp_tcsetpgrp()
-{
+    void test_tcgetpgrp_tcsetpgrp()
+    {
     M_TRACE("---------  Begin test_tcgetpgrp_tcsetpgrp()  ---------\n");
     create_child();
     // 只有父进程能到达此处
@@ -242,7 +242,7 @@ void test_tcgetpgrp_tcsetpgrp()
     print_parent_pid();
     My_getpgrp(); // 父进程自己
     M_TRACE("---------  End test_tcgetpgrp_tcsetpgrp()  ---------\n\n");
-}
+    }
 	```
   	![control_terminal](../imgs/progress_relations/control_terminal.JPG) 
 	可以看到：

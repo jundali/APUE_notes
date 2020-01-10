@@ -296,8 +296,8 @@
 14. 示例：在`main`函数中调用`test_system_file`函数：
 	
 	```
-void test_system_file()
-{
+	void test_system_file()
+	{
     M_TRACE("---------  Begin test_system_file()  ---------\n");
     printf("********* test passwd ************\n");
     _test_passwd();
@@ -310,7 +310,7 @@ void test_system_file()
     printf("\n\n********* test host ************\n");
     _test_host();
     M_TRACE("---------  End test_system_file()  ---------\n\n");
-}
+	}
 	```
 
 	注意：
@@ -533,8 +533,8 @@ void test_system_file()
 11. 示例：在`main`函数中调用`test_times`函数：
 
 	```
-void test_times()
-{
+	void test_times()
+	{
     M_TRACE("---------  Begin test_times()  ---------\n");
     struct timespec tsp_time;
     struct timeval tvl_time;
@@ -566,7 +566,7 @@ void test_times()
     My_localtime(&tm_t);
     My_mktime(tm_tm);
     M_TRACE("---------  End test_times()  ---------\n\n");
-}	
+	}	
 	```
 
   	![time](../imgs/system_info/time.JPG)  

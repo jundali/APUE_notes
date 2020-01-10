@@ -197,8 +197,8 @@
 3. 示例:在 `main`函数中调用 `test_fopen_fwide_setvbuf`函数：
 
 	```
-void test_fopen_fwide_setvbuf()
-{
+	void test_fopen_fwide_setvbuf()
+	{
     M_TRACE("---------  Begin test_fopen_fwide_setvbuf()  ---------\n");
     assert(prepare_file("test",NULL,0,S_IRWXU)==0);
 
@@ -228,7 +228,7 @@ void test_fopen_fwide_setvbuf()
     }
     un_prepare_file("test");
     M_TRACE("---------  End test_fopen_fwide_setvbuf()  ---------\n\n");
-}
+	}
 	```
 	![FILE_struct](../imgs/std_IO/FILE_struct.JPG)
 
@@ -492,8 +492,8 @@ void test_fopen_fwide_setvbuf()
 11. 示例:在`main`函数中调用`test_get_put_seek` 函数：
 
 	```
-void test_get_put_seek()
-{
+	void test_get_put_seek()
+	{
     M_TRACE("---------  Begin test_get_put_seek()  ---------\n");
     assert(prepare_file("test_char",NULL,0,S_IRWXU)==0);
     assert(prepare_file("test_line",NULL,0,S_IRWXU)==0);
@@ -522,7 +522,7 @@ void test_get_put_seek()
     un_prepare_file("test_line");
     un_prepare_file("test_binary");
     M_TRACE("---------  End test_get_put_seek()  ---------\n\n");
-}
+	}
 	```
 	![FILE_read_write_seek](../imgs/std_IO/FILE_read_write_seek.JPG)
 
@@ -659,8 +659,8 @@ void test_get_put_seek()
 
 
 	```
-void test_printf_scanf()
-{
+	void test_printf_scanf()
+	{
     M_TRACE("---------  Begin test_printf_scanf()  ---------\n");
     printf("**** test printf  *******\n");
     _test_printf();
@@ -671,7 +671,7 @@ void test_printf_scanf()
     printf("\n\n**** test sscanf  *******\n");
     _test_sscanf();
     M_TRACE("---------  End test_printf_scanf()  ---------\n\n");
-}
+	}
 	```	
 	![print_scan](../imgs/std_IO/print_scan.JPG) 
 
@@ -735,15 +735,15 @@ void test_printf_scanf()
 4. 示例：在`main`函数中调用`test_tmpnam_mkdtemp`函数：
 
 	```
-void test_tmpnam_mkdtemp()
-{
+	void test_tmpnam_mkdtemp()
+	{
     M_TRACE("---------  Begin test_printf_scanf()  ---------\n");
     printf("******** test tmpnam ********\n");
     _test_tmpnam();
     printf("\n\n******** test mkdtemp ********\n");
     _test_mkdtemp();
     M_TRACE("---------  End test_printf_scanf()  ---------\n\n");
-}
+	}
 	```
 
 	![make_temp_file](../imgs/std_IO/make_temp_file.JPG) 
@@ -806,8 +806,8 @@ void test_tmpnam_mkdtemp()
 6. 示例：在`main`函数中调用`test_memstream`函数：
 
 	```
-void test_memstream()
-{
+	void test_memstream()
+	{
     M_TRACE("---------  Begin test_memstream()  ---------\n");
     char mem_buffer[16];
     FILE *fp=My_fmemopen(mem_buffer,16,"r+");
@@ -837,7 +837,7 @@ void test_memstream()
         fclose(fp);
     }
     M_TRACE("---------  End test_memstream()  ---------\n\n");
-}
+	}
 	```
 
 	![mem_FILE_stream](../imgs/std_IO/mem_FILE_stream.JPG) 

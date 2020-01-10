@@ -81,8 +81,8 @@
 7. 示例：在`main`函数中调用`test_thread_create`函数：
 
 	```
-void test_thread_create()
-{
+    void test_thread_create()
+    {
     M_TRACE("---------  Begin test_thread_create()  ---------\n");
     //******** 创建子线程 *********//
     pthread_mutex_lock(&mutex); //必须同步。否则多个线程的输出交叉进行
@@ -97,7 +97,7 @@ void test_thread_create()
         thread_join_int(threads[i],values+i);
     }
     M_TRACE("---------  End test_thread_create()  ---------\n\n");
-}
+    }
 	```
 	![create_thread](../imgs/thread/create_thread.JPG)
 
@@ -171,8 +171,8 @@ void test_thread_create()
 14. 示例：在`main`函数中调用`test_thread_quit`函数：
 
  	```
-void test_thread_quit()
-{
+    void test_thread_quit()
+    {
     M_TRACE("---------  Begin test_thread_quit()  ---------\n");
     //******** 创建子线程 *********//
     pthread_mutex_lock(&mutex); //必须同步。否则多个线程的输出交叉进行
@@ -189,7 +189,7 @@ void test_thread_quit()
         thread_join_int(threads[i],values+i);
     }
     M_TRACE("---------  End test_thread_quit()  ---------\n\n");
-}
+    }
 	```
 	![thread_quit](../imgs/thread/thread_quit.JPG)
 
@@ -225,8 +225,8 @@ void test_thread_quit()
 16. 示例：在`main`函数中调用`test_thread_clean`函数：
 
 	```
-void test_thread_clean()
-{
+    void test_thread_clean()
+    {
     M_TRACE("---------  Begin test_thread_clean()  ---------\n");
     //******** 创建子线程 *********//
     pthread_t thread;
@@ -235,7 +235,7 @@ void test_thread_clean()
     int value;
     thread_join_int(thread,&value);
     M_TRACE("---------  End test_thread_clean()  ---------\n\n");
-}
+    }
 	```
 
 	![thread_clean_up](../imgs/thread/thread_clean_up.JPG)
@@ -264,8 +264,8 @@ void test_thread_clean()
 19. 示例：在`main`函数中调用`test_thread_detach`函数：
 
 	```
-void test_thread_detach()
-{
+    void test_thread_detach()
+    {
     M_TRACE("---------  Begin test_thread_detach()  ---------\n");
     //******** 创建子线程 *********//
     pthread_mutex_lock(&mutex); //必须同步。否则多个线程的输出交叉进行
@@ -281,7 +281,7 @@ void test_thread_detach()
         thread_join_int(threads[i],values+i);
     }
     M_TRACE("---------  End test_thread_detach()  ---------\n\n");
-}
+    }
 	```
 
 	![thread_detach](../imgs/thread/thread_detach.JPG)
@@ -292,8 +292,8 @@ void test_thread_detach()
 20. 示例：在`main`函数中调用`test_thread_join`函数。任何线程都能`pthread_join`子线程；但是子线程不能等待主线程
 
 	```
-void test_thread_join()
-{
+    void test_thread_join()
+    {
     M_TRACE("---------  Begin test_thread_join()  ---------\n");
     //******** 创建子线程 *********//
     pthread_mutex_lock(&mutex); //必须同步。否则多个线程的输出交叉进行
@@ -308,7 +308,7 @@ void test_thread_join()
         thread_join_int(threads[2+i],values+i);
     }
     M_TRACE("---------  End test_thread_join()  ---------\n\n");
-}
+    }
 	```
 
 	![pthread_join](../imgs/thread/pthread_join.JPG)	
@@ -420,8 +420,8 @@ void test_thread_join()
 7. 实例：在`main`函数中调用`test_mutex`函数：
 
 	```
-void test_mutex()
-{
+    void test_mutex()
+    {
     M_TRACE("---------  Begin test_mutex()  ---------\n");
     //********** 初始化 *************//
     shared_int=99;
@@ -438,7 +438,7 @@ void test_mutex()
 
     My_pthread_mutex_destroy(&mutex);
     M_TRACE("---------  End test_mutex()  ---------\n\n");
-}
+    }
 	```
 	![mutex](../imgs/thread/mutex.JPG)
 	从结果可见：如果不加锁，子线程之间相互竞争。最终主线程得到的是不正确的值。而且每次运行的情况可能还有不同
@@ -554,8 +554,8 @@ void test_mutex()
 8. 示例：在`main`函数中调用`test_rwlock`函数：
 
 	```
-void test_rwlock()
-{
+    void test_rwlock()
+    {
     M_TRACE("---------  Begin test_rwlock()  ---------\n");
     //********** 初始化 *************//
     shared_int=99;
@@ -573,7 +573,7 @@ void test_rwlock()
 
     My_pthread_rwlock_destroy(&rwlock);
     M_TRACE("---------  End test_rwlock()  ---------\n\n");
-}
+    }
 	```
 	![rwlock](../imgs/thread/rwlock.JPG)
 	可以看到，在读锁序列中，所有的子线程都能对读锁进行加锁，因此会并行执行。因此如果此时写共享数据，发现结果会不正确。
@@ -674,8 +674,8 @@ void test_rwlock()
 7. 示例：在`main`函数中调用`test_condition`函数：
 
 	```
-void test_condition()
-{
+    void test_condition()
+    {
     M_TRACE("---------  Begin test_condition()  ---------\n");
     //********** 初始化 *************//
     shared_int=0;
@@ -706,7 +706,7 @@ void test_condition()
     My_pthread_mutex_destroy(&mutex);
     My_pthread_cond_destroy(&cond);
     M_TRACE("---------  End test_condition()  ---------\n\n");
-}
+    }
 
 	```
 	![cond](../imgs/thread/cond.JPG)
@@ -778,8 +778,8 @@ void test_condition()
 8. 示例：在`main`函数中调用`test_spinlock`函数：
 
 	```
-void test_spinlock()
-{
+    void test_spinlock()
+    {
     M_TRACE("---------  Begin test_spinlock()  ---------\n");
     //********** 初始化 *************//
     shared_int=0;
@@ -799,7 +799,7 @@ void test_spinlock()
 
     My_pthread_spin_destroy(&spin_lock);
     M_TRACE("---------  End test_spinlock()  ---------\n\n");
-}
+    }
 
 	```
 	![spinlock](../imgs/thread/spinlock.JPG)
@@ -859,8 +859,8 @@ void test_spinlock()
 5. 示例：在`main`函数中调用`test_barrier`函数：
 
 	```
-void test_barrier()
-{
+    void test_barrier()
+    {
     M_TRACE("---------  Begin test_barrier()  ---------\n");
     const int N=3;
     //********** 初始化 *************//
@@ -876,7 +876,7 @@ void test_barrier()
 
     My_pthread_barrier_destroy(&barrier);
     M_TRACE("---------  End test_barrier()  ---------\n\n");
-}
+    }
 	```
 
 	![barrier](../imgs/thread/barrier.JPG)

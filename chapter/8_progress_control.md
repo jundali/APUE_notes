@@ -31,8 +31,8 @@
 3. 示例：在`main`函数中调用`test_progress_id`函数：
 
 	```
-void test_progress_id()
-{
+    void test_progress_id()
+    {
     M_TRACE("---------  Begin test_progress_id()  ---------\n");
     printf("progress ids:\n");
     printf("\t progress id:%d\n",getpid());
@@ -42,7 +42,7 @@ void test_progress_id()
     printf("\t group id:%d\n",getgid());
     printf("\t efficient group id:%d\n",getegid());
     M_TRACE("---------  End test_progress_id()  ---------\n\n");
-}
+    }
 	```
 	![ids](../imgs/progress_control/progress_id.JPG)
 
@@ -93,8 +93,8 @@ void test_progress_id()
 5. 示例： 在`main`函数中调用`test_fork` 函数：
 
 	```
-void test_fork()
-{
+    void test_fork()
+    {
     M_TRACE("---------  Begin test_fork()  ---------\n");
     assert(prepare_file("test","abc",3,S_IRWXU)==0);
     int fd=My_open("test",O_RDWR);
@@ -125,7 +125,7 @@ void test_fork()
     close(fd);
     un_prepare_file("test");
     M_TRACE("---------  End test_fork()  ---------\n\n");
-}
+    }
 
 	```
 
@@ -149,8 +149,8 @@ void test_fork()
 8. 示例：在`main`函数中调用`test_vfork`函数：
 
 	```
-void test_vfork()
-{
+    void test_vfork()
+    {
     M_TRACE("---------  Begin test_vfork()  ---------\n");
     assert(prepare_file("test","abc",3,S_IRWXU)==0);
     int fd=My_open("test",O_RDWR);
@@ -166,28 +166,28 @@ void test_vfork()
     int id=vfork();
     if(0==id)
     {//child
-//        fcntl_lock(fd);  // 加锁
+    //        fcntl_lock(fd);  // 加锁
         printf("*********** In Child ***********\n");
         print_pid_ppid();
         printf("i=%d\n",i);
         i=999;
         printf("*********** In Child ***********\n");
-//        fcntl_unlock(fd); // 解锁
+    //        fcntl_unlock(fd); // 解锁
         _exit(0);
     }else
     {//parent
-//        fcntl_lock(fd);  // 加锁
+    //        fcntl_lock(fd);  // 加锁
         printf("*********** In Parent ***********\n");
         print_pid_ppid();
         printf("i=%d\n",i);
         printf("*********** In Parent ***********\n");
-//        fcntl_unlock(fd); // 解锁
+    //        fcntl_unlock(fd); // 解锁
     }
 
     close(fd);
     un_prepare_file("test");
     M_TRACE("---------  End test_vfork()  ---------\n\n");
-}
+    }
 	```
   	![vfork](../imgs/progress_control/vfork.JPG)
 	
@@ -299,8 +299,8 @@ void test_vfork()
 6. 示例：在`main`函数中调用`test_wait_waitpid`函数：
 
 	```
-void test_wait_waitpid()
-{
+    void test_wait_waitpid()
+    {
     M_TRACE("---------  Begin test_wait_waitpid()  ---------\n");
     assert(prepare_file("test","abc",3,S_IRWXU)==0);
     int fd=My_open("test",O_RDWR);
@@ -331,7 +331,7 @@ void test_wait_waitpid()
             }
         }
     }
-}
+    }
 	```
   	![wait](../imgs/progress_control/wait.JPG)
 	
@@ -440,8 +440,8 @@ void test_wait_waitpid()
 3. 示例： 在`main`函数中调用`test_exec` 函数
 
 	```
-void test_exec()
-{
+    void test_exec()
+    {
     M_TRACE("---------  Begin test_exec()  ---------\n");
     char buffer[1024];
     getcwd(buffer,1024);
@@ -454,22 +454,22 @@ void test_exec()
     _test_execlp("print_arg"); //相对文件名
     _test_execvp("print_arg"); //相对文件名
     M_TRACE("---------  End test_exec()  ---------\n\n");
-}
+    }
 	```
 	这里调用的`print_arg`程序非常简单，就是打印环境变量和命令行参数。其程序如下：
 
 	```
-//************* print_arg 程序的源代码 **********//
-//                                             //
-// 该程序的功能是打印环境变量以及参数列表            //
-//                                            //
-//********************************************//
-#include <stdio.h>
-#include<stdlib.h>
-#include<unistd.h>
-extern char **environ;
-void print_environ()
-{
+    //************* print_arg 程序的源代码 **********//
+    //                                             //
+    // 该程序的功能是打印环境变量以及参数列表            //
+    //                                            //
+    //********************************************//
+    #include <stdio.h>
+    #include<stdlib.h>
+    #include<unistd.h>
+    extern char **environ;
+    void print_environ()
+    {
     printf("\t************Environment***************\n");
     char **ptr=environ;
     while(*ptr!=NULL)
@@ -478,9 +478,9 @@ void print_environ()
         ptr++;
     }
     printf("\n");
-}
-int main(int argc, char *argv[])
-{
+    }
+    int main(int argc, char *argv[])
+    {
     printf("\t************Argument List***************\n");
     for(int i=0;i<argc;i++)
     {
@@ -489,7 +489,7 @@ int main(int argc, char *argv[])
     printf("\n");
     print_environ();
     return 0;
-}
+    }
 	```
 	编译`print_arg`程序后，将它放置在目录`build-APUE-Desktop_Qt_5_5_1_GCC_64bit-Debug`下，并且向`PATH`中添加主目录路径。在`shell`中输入命令：
 	
@@ -501,8 +501,8 @@ int main(int argc, char *argv[])
 	最终调用结果输出到文件，内容为（省略号中为环境变量内容，因太长所以这里只截取一部分）：
 
 	```
----------  Begin test_exec()  ---------
----------  End test_exec()  ---------
+    ---------  Begin test_exec()  ---------
+    ---------  End test_exec()  ---------
 
 	************Argument List***************
 	'execle_arg1'	'execle_arg2'
@@ -594,13 +594,13 @@ int main(int argc, char *argv[])
 8. 示例：在`main`函数中调用`test_system`函数：
 
 	```
-void test_system()
-{
+    void test_system()
+    {
     M_TRACE("---------  Begin test_system()  ---------\n");
     My_system("ls /home"); //命令存在
     My_system("ttttt"); // 不存在命令
     M_TRACE("---------  End test_system()  ---------\n\n");
-}
+    }
 
 	```
 	注意：调用`system`后不再需要调用`wait`等进程控制原语了。这一切控制由`system`打包
@@ -678,8 +678,8 @@ void test_system()
 6. 示例：在`main`函数中调用`test_setuid_seteuid`函数：
 
 	```
-void test_setuid_seteuid()
-{
+    void test_setuid_seteuid()
+    {
     M_TRACE("---------  Begin test_setuid_seteuid()  ---------\n");
     struct passwd* result=My_getpwnam("huaxz1986");
     if(NULL==result)
@@ -699,16 +699,16 @@ void test_setuid_seteuid()
     My_setgid(result->pw_gid); // 二选一
     My_seteuid(result->pw_uid); // 二选一
     My_setegid(result->pw_gid); // 二选一
-//    My_setuid(0); // 二选一
-//    My_setgid(0); // 二选一
-//    My_seteuid(0); // 二选一
-//    My_setegid(0); // 二选一
+    //    My_setuid(0); // 二选一
+    //    My_setgid(0); // 二选一
+    //    My_seteuid(0); // 二选一
+    //    My_setegid(0); // 二选一
     print_uid();
     print_gid();
     print_euid();
     print_egid();
     M_TRACE("---------  End test_setuid_seteuid()  ---------\n\n");
-}
+    }
 	```
 	我们首先在普通用户状态下，将那些 `id`都设置成超级用户所属的用户`ID`和组`ID`：
 
@@ -809,8 +809,8 @@ void test_setuid_seteuid()
 4. 示例：在`main`函数中调用`test_progress_times`函数：
 
 	```
-void test_progress_times()
-{
+    void test_progress_times()
+    {
     M_TRACE("---------  Begin test_progress_times()  ---------\n");
     assert(prepare_file("test","abc",3,S_IRWXU)==0);
     int fd=My_open("test",O_RDWR);
@@ -837,7 +837,7 @@ void test_progress_times()
     close(fd);
     un_prepare_file("test");
     M_TRACE("---------  End test_progress_times()  ---------\n\n");
-}
+    }
 	```
 	![times](../imgs/progress_control/times.JPG)
 
@@ -911,15 +911,15 @@ void test_progress_times()
 5. 示例：在`main`函数中调用`test_getpriority_setpriority`函数:
 
 	```
-void test_getpriority_setpriority()
-{
+    void test_getpriority_setpriority()
+    {
     M_TRACE("---------  Begin test_getpriority_setpriority()  ---------\n");
     create_child();
     // 只有父进程能到此处
     check_waitpid();
     My_getpriority(PRIO_PROCESS,0); // 父进程自己的 nice 值
     M_TRACE("---------  End test_getpriority_setpriority()  --------\n\n");
-}
+    }
 	```
 	![nice](../imgs/progress_control/nice.JPG) 
 	可以看到，如果为普通用户，则没有权限降低`nice`值。因为普通进程没有权限提升其优先级（即降低`nice`值）。在超级用户权限下，结果如下：
