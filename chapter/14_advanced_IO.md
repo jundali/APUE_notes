@@ -74,7 +74,7 @@
 
 	```
 
-	![unblock_IO](../imgs/advanced_IO/unblock_IO.jpg)
+	![unblock_IO](../imgs/advanced_IO/unblock_IO.JPG)
 
 ## 记录锁
 
@@ -226,7 +226,7 @@
     }
 	```
 
-	![fcntl_file_lock](../imgs/advanced_IO/fcntl_file_lock.jpg)
+	![fcntl_file_lock](../imgs/advanced_IO/fcntl_file_lock.JPG)
 
 	- 第0秒：父进程（进程ID`4272`）对文件的`0-9`字节加读锁，对文件的`10-19`字节加写锁。然后父进程创建了三个子进程。可以看到父进程加锁正常！
 	- 第1秒：子进程1（进程ID`4273`）从睡眠中返回，然后试图对文件的`0-9`字节加读锁，对文件的`10-19`字节加写锁，然后睡眠 。可以看到，子进程加读锁正常，加写锁失败（提示说已经有进程持有锁，持有锁的进程ID为`4272`，就是父进程！）
@@ -326,7 +326,7 @@
         return 0;
     }
 	```
-	![fcntl_file_many_lock](../imgs/advanced_IO/fcntl_file_many_lock.jpg)
+	![fcntl_file_many_lock](../imgs/advanced_IO/fcntl_file_many_lock.JPG)
   
 	- 第0秒：父进程（进程ID`4353`）对文件的加锁：
 		- 先对文件的`0-4`字节加读锁，再对`0-9`字节加读锁
@@ -408,7 +408,7 @@
     }
 	```
 
-	![lock_open_type](../imgs/advanced_IO/lock_open_type.jpg)
+	![lock_open_type](../imgs/advanced_IO/lock_open_type.JPG)
 
 	可以看到：
 	- `fd1`是只读打开的，在其上加读锁正常；在其上加写锁失败，报告说`Bad file descriptor`
