@@ -57,7 +57,7 @@
 
 5. 示例
 
-	```
+```
 #include <stdio.h>
 #include<unistd.h>
 #include<sys/stat.h>
@@ -74,7 +74,7 @@ int main(void)
     }
     return 0;
 }
-	```
+```
 	![daemon](../imgs/daemon/daemon.JPG)
 
 ## 2. 出错记录
